@@ -3,6 +3,45 @@
 ---
 
 **New Interaction**
+**Date**: 03-09-2026 11:58
+**User**: ynehme2007@gmail.com
+**Prompt**: Update the journal with these past interactions
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Added missing recent interaction logs to `JOURNAL.md` and preserved reverse-chronological ordering.
+**Reasons for Changes**: User requested journaling backfill so all recent prompts and responses are captured in the required format.
+**Context**: This update backfills unlogged prompts about Hangman game states and possible implementation bugs.
+**My Observations**: 
+
+---
+
+**New Interaction**
+**Date**: 03-09-2026 11:58
+**User**: ynehme2007@gmail.com
+**Prompt**: What are possible bugs in Word Guess/Hangman implentations
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Provided a categorized bug list covering input handling, repeated guesses, reveal logic, win/lose checks, state transitions, display sync, randomness, edge cases, and loop/control-flow issues.
+**Reasons for Changes**: To help identify common failure points in Hangman implementations and support robust testing.
+**Context**: User was building notes in `MY_NOTES.md` and asked for likely bug patterns to include.
+**My Observations**: 
+
+---
+
+**New Interaction**
+**Date**: 03-09-2026 11:58
+**User**: ynehme2007@gmail.com
+**Prompt**: What states does a Word Game like Hangman game need?
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Provided a state-machine style breakdown including `START`, `SHOW_STATUS`, `GET_INPUT`, `VALIDATE_INPUT`, `APPLY_GUESS`, `CHECK_WIN`, `CHECK_LOSE`, `WIN`, `LOSE`, `PLAY_AGAIN`, and `EXIT` plus the common game loop.
+**Reasons for Changes**: To give a clear architecture for implementing Hangman behavior with predictable transitions.
+**Context**: User requested conceptual guidance and copied the result into `MY_NOTES.md`.
+**My Observations**: 
+
+---
+
+**New Interaction**
 **Date**: 03-09-2026 11:49
 **User**: ynehme2007@gmail.com
 **Prompt**: Give me a step by step to update my git hub repo with the changes I make here. The git hub link is https://github.com/ynehme-coder/lab4-word-game.git
