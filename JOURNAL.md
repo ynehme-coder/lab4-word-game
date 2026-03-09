@@ -3,6 +3,45 @@
 ---
 
 **New Interaction**
+**Date**: 03-09-2026 11:49
+**User**: ynehme2007@gmail.com
+**Prompt**: Give me a step by step to update my git hub repo with the changes I make here. The git hub link is https://github.com/ynehme-coder/lab4-word-game.git
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Logged this interaction in `JOURNAL.md` and captured the response intent to provide a step-by-step Git workflow for staging, committing, and pushing changes to `origin/main`.
+**Reasons for Changes**: To comply with `.github/agents/journal-logger.agent.md` requirements to record each prompt with timestamp, fixed user identity, mode, model, and concise context.
+**Context**: User explicitly requested journaling for a GitHub update workflow prompt and provided repository URL `https://github.com/ynehme-coder/lab4-word-game.git`.
+**My Observations**: 
+
+---
+
+**New Interaction**
+**Date**: 03-09-2026 11:47
+**User**: ynehme2007@gmail.com
+**Prompt**: read the copilot instructions file and activate the journal
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Activated the journal-logger workflow, initialized user identity in `.github/agents/journal-logger.agent.md`, and prepended this interaction entry to `JOURNAL.md`.
+**Reasons for Changes**: To comply with repository journaling instructions requiring per-interaction logging with fixed user identity, timestamp, mode, and model.
+**Context**: Copilot read `.github/agents/journal-logger.agent.md` and the HEAD version of `.github/instructions/ai4se.instructions.md` (currently deleted in the working tree) before updating the journal.
+**My Observations**: 
+
+---
+
+**New Interaction**
+**Date**: 03-09-2026 11:16
+**User**: Yara
+**Prompt**: update the journal with all the relevant interactions we've had.
+**CoPilot Mode**: Agent
+**CoPilot Model**: GPT-5.3-Codex
+**Changes Made**: Updated `JOURNAL.md` by prepending a new entry for this interaction in the required reverse-chronological format.
+**Reasons for Changes**: To comply with repository instructions that require logging each prompt interaction with timestamp, model, mode, and context.
+**Context**: User requested the journal be updated to reflect the current conversation. Existing historical entries were preserved as-is below the new entry.
+**My Observations**: 
+
+---
+
+**New Interaction**
 **Date**: 03-02-2026 14:45
 **User**: Yara
 **Prompt**: Read the ai4se.instructions.md file and follow its directive. Activate the journal agent in journal-logger.agent.md
