@@ -2,7 +2,7 @@
 
 
 **Copilot Suggestions**
-A Hangman-style word game is easiest to design as a small state machine. Core states:
+CORE STATES:
 
 START
 Load word list, pick secret word, reset lives, clear guessed letters.
@@ -40,3 +40,55 @@ End game.
 
 A common loop is:
 START -> SHOW_STATUS -> GET_INPUT -> VALIDATE_INPUT -> APPLY_GUESS -> CHECK_WIN/CHECK_LOSE -> SHOW_STATUS ... until WIN or LOSE.
+
+POSSIBLE BUGS:
+
+1) Input validation bugs
+Accepts empty input or spaces as guesses.
+Accepts multi-letter input when only one letter is allowed.
+Case sensitivity issue (a and A treated as different guesses).
+Non-alphabetic characters (7, ?) not rejected.
+
+2) Repeated guess handling
+Repeated correct letter reveals again or gives extra points.
+Repeated wrong letter decreases lives again (usually should not).
+Duplicate tracking mismatch (guessed_letters not updated correctly).
+
+3) Word reveal logic bugs
+Only first occurrence of a letter is revealed (e.g., letter reveals one t instead of both).
+Incorrect indexing causes wrong letters to appear.
+Revealed state not persisted between turns.
+
+4) Win/Lose condition bugs
+Win triggers too early (e.g., comparing sets and ignoring repeated letters).
+Lose triggers one turn late or one turn early (lives < 0 vs lives == 0).
+Both win and lose conditions can trigger in same turn due to bad check order.
+
+5) State transition bugs
+Game gets stuck in VALIDATE_INPUT or GET_INPUT.
+PLAY_AGAIN doesn’t fully reset state (old guessed letters/lives remain).
+START doesn’t pick a fresh word.
+
+6) Display/status bugs
+Masked word display out of sync with internal revealed letters.
+Used letters list shows duplicates or unsorted clutter.
+Remaining lives displayed incorrectly after guess.
+
+7) Word source/randomization bugs
+Empty word list crashes game.
+Leading/trailing whitespace/newline in chosen word.
+Random selection not random (same word repeatedly due to seeding/misuse).
+
+8) Scoring/progress bugs (if scoring exists)
+Points awarded for invalid or repeated guesses.
+Wrong guesses don’t reduce score/lives consistently.
+
+9) Edge-case word bugs
+Hyphen/apostrophe words break validation/display.
+Very short words (a) cause immediate win logic issues.
+Unicode/accented letters (é) fail in normalization checks.
+
+10) Loop/control-flow bugs
+Infinite loop when invalid input is entered.
+EXIT path not reachable from PLAY_AGAIN.
+Crash on Ctrl+C/EOF input not handled.
