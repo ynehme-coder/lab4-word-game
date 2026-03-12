@@ -1,8 +1,9 @@
-# My Original Thinking
+# MY NOTES
+**My Original Thinking**
 
 
 **Copilot Suggestions**
-CORE STATES:
+**APP STATES:**
 
 START
 Load word list, pick secret word, reset lives, clear guessed letters.
@@ -41,7 +42,35 @@ End game.
 A common loop is:
 START -> SHOW_STATUS -> GET_INPUT -> VALIDATE_INPUT -> APPLY_GUESS -> CHECK_WIN/CHECK_LOSE -> SHOW_STATUS ... until WIN or LOSE.
 
-POSSIBLE BUGS:
+**APP VARIABLES**
+
+secret_word: String - The target word that player must guess (never changes during a game).
+guessed_letters: Set - All letters already guessed by the player (case-insensitive).
+lives: Integer - Remaining wrong guesses allowed (decreases on wrong guess, ends game at 0).
+revealed_letters: Set - Letters that have been correctly guessed and are now visible.
+game_state: String - Current state: START, SHOW_STATUS, GET_INPUT, VALIDATE_INPUT, APPLY_GUESS, CHECK_WIN, CHECK_LOSE, WIN, LOSE, PLAY_AGAIN, EXIT.
+current_guess: String - The input from the player (letter or full word).
+word_list: List - All available words loaded from the word file at START.
+masked_word: String - Visual display of the word with revealed letters and underscores (e.g., "_ A _ _").
+
+**APP RULES AND INVARIANT**
+
+The secret_word must be set once at START and never changed until the game ends or restarts.
+Each letter in guessed_letters must be a single alphabetic character (A-Z), case-insensitive.
+guessed_letters can only grow (letters added) or be cleared on restart, never removed mid-game.
+lives must never go below 0; game moves to LOSE when lives == 0.
+revealed_letters is a subset of secret_word; initially empty, grows as guesses succeed.
+A guess is invalid if: empty, non-alphabetic, already in guessed_letters, or too many characters.
+A correct guess reveals ALL instances of that letter in the word (not just the first).
+A wrong guess decreases lives by exactly 1.
+A repeated correct guess should not change game state (letter already revealed).
+A repeated wrong guess should not decrease lives again (already in guessed_letters).
+WIN condition: all letters of secret_word are in revealed_letters.
+LOSE condition: lives reaches 0 before all letters are revealed.
+masked_word must always reflect the current state of revealed_letters accurately.
+PLAY_AGAIN must fully reset all game variables (secret_word, guessed_letters, lives, revealed_letters) for a fresh game.
+
+**APP BUGS:**
 
 1) Input validation bugs
 Accepts empty input or spaces as guesses.
