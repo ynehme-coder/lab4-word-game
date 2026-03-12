@@ -1,31 +1,45 @@
-def update_game_state(secret_word: str, guessed_letters: list[str], guess: str, lives: int) -> tuple[list[str],int]:
-    word = ""
-    guess.capitalize()
-    
-    for _ in range(len(secret_word)):
-        word += "_"
-    
-    while guess in guessed_letters:
-        print("Already guessed!")
-        return[guessed_letters,lives]
-    
-    if guess in secret_word:
-        print("Letter Guessed")
-        s = secret_word
-        
-        while s.find(guess) != -1:
-            i = s.find(guess)
-            word = word[: i] + guess + word[i + 1:]
-            s = s[i+1:]
-        
-        guessed_letters.append(guess)
+def update_game_state(secret_word: str,
+                      guessed_letters: list[str],
+                      guess: str,
+                      lives: int,
+                      word: list[str]) -> tuple[list[str], list[str], int, str]:
+    """Update Hangman state for one guess.
 
-        print(word)
-        return[guessed_letters,lives]
-    else:
+    Args:
+        secret_word: The target word.
+        guessed_letters: Letters already guessed in previous turns.
+        guess: The new letter guess for this turn.
+        lives: Remaining lives before applying the guess.
+        word: Current revealed-word state, for example ['A', '_', '_'].
+
+    Returns:
+        A tuple of (word, guessed_letters, lives, status), where status is one
+        of "invalid", "repeat", "hit", or "miss".
+    """
+
+    guess = guess.upper()
+    secret_word = secret_word.upper()
+
+    # INVALID
+    if len(guess) != 1 or not guess.isalpha():
+        return (word, guessed_letters, lives, "invalid")
+
+    # REPEATED
+    if guess in guessed_letters:
+        return (word, guessed_letters, lives, "repeat")
+
+    guessed_letters = guessed_letters.copy()
+    guessed_letters.append(guess)
+
+    hit = False
+    
+    for i in range(len(secret_word)):
+        if secret_word[i] == guess:
+            word[i] = guess
+            hit = True
+
+    if hit: #CORRECT
+        return (word, guessed_letters, lives, "hit")
+    else: #INCORRECT
         lives -= 1
-        guessed_letters.append(guess)
-
-        print("Wrong! Letter not in word.")
-        print(f"Lives: {lives}")
-        return[guessed_letters,lives]
+        return (word, guessed_letters, lives, "miss")
