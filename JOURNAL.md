@@ -3,6 +3,36 @@
 ---
 
 ### **New Interaction**
+- **Date**: 03-12-2026 16:07
+- **User**: ynehme2007@gmail.com
+- **Prompt**: Turn the Socratic mode on
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: Claude Haiku 4.5
+- **Socratic Mode**: ON
+- **Changes Made**: User toggled Socratic mode from OFF to ON
+- **Context and Reasons for Changes**: User explicitly toggled Socratic mode to ON using recognized toggle phrase
+
+### **New Interaction**
+- **Date**: 03-12-2026 15:58
+- **User**: ynehme2007@gmail.com
+- **Prompt**: Turn the Socratic mode off
+- **CoPilot Mode**: Ask
+- **CoPilot Model**: Claude Haiku 4.5
+- **Socratic Mode**: OFF
+- **Changes Made**: User toggled Socratic mode from ON to OFF
+- **Context and Reasons for Changes**: User explicitly toggled Socratic mode to OFF using recognized toggle phrase
+
+### **New Interaction**
+- **Date**: 03-12-2026 15:47
+- **User**: ynehme2007@gmail.com
+- **Prompt**: update or create the readme file to explain how to run the game and tests
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: Claude Haiku 4.5
+- **Socratic Mode**: ON
+- **Changes Made**: Logged user request to create/update README documentation for Hangman project with instructions on running the game and tests
+- **Context and Reasons for Changes**: User explicitly requested logging of this interaction for the Hangman word-game project README documentation update
+
+### **New Interaction**
 - **Date**: 03-12-2026 14:56
 - **User**: ynehme2007@gmail.com
 - **Prompt**: Can you write me a test file to test my function?
