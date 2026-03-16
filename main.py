@@ -58,7 +58,7 @@ def update_game_state(secret_word: str,
         return (word, guessed_letters, lives, "miss")
 
 def game(mode):
-    secret_word = words[random.randint(0,len(words))]
+    secret_word = random.choice(words)
     guessed_letters = []
     guess = ""
     lives = 6
@@ -68,11 +68,12 @@ def game(mode):
     for _ in secret_word:
         word.append("_")
     
-    while lives != 0 and word.index("_") != -1:
-        if mode == "u" or mode == "U":
+    while lives != 0 and "_" in word:
+        if mode.lower() == "u":
             guess = input("Input guess: ")
         else:
-            guess = random.choice(string.ascii_uppercase)
+            choices = [c for c in string.ascii_uppercase if c not in guessed_letters]
+            guess = random.choice(choices)
             print(f"Computer guesses: {guess}")
 
         word,guessed_letters,lives,state = update_game_state(secret_word,guessed_letters,guess,lives,word)
@@ -90,7 +91,7 @@ def game(mode):
         return None
 
         
-print("Hangman Game")
-mode = input("Who would you like to play? User/Computer (u/c)")
-    
-if __name__ == "__main__":    game(mode)
+if __name__ == "__main__":
+    print("Hangman Game")
+    mode = input("Who would you like to play? User/Computer (u/c): ")
+    game(mode)
