@@ -1,3 +1,16 @@
+import random
+import string
+
+words = [
+            "PLANET", "PYTHON", "JUNGLE",
+            "ROCKET", "LIBRARY", "MYSTERY",
+            "CAPTAIN", "WINTER", "THUNDER",
+            "BANANA","DIAMOND","GARDEN",
+            "NOTEBOOK","SHADOW","VILLAGE",
+            "COMPASS","ORANGE","TREASURE",
+            "MONSTER","FOUNTAIN","BUTTERFLY"
+        ]
+
 def update_game_state(secret_word: str,
                       guessed_letters: list[str],
                       guess: str,
@@ -43,3 +56,41 @@ def update_game_state(secret_word: str,
     else: #INCORRECT
         lives -= 1
         return (word, guessed_letters, lives, "miss")
+
+def game(mode):
+    secret_word = words[random.randint(0,len(words))]
+    guessed_letters = []
+    guess = ""
+    lives = 6
+    word = []
+    state = ""
+
+    for _ in secret_word:
+        word.append("_")
+    
+    while lives != 0 and word.index("_") != -1:
+        if mode == "u" or mode == "U":
+            guess = input("Input guess: ")
+        else:
+            guess = random.choice(string.ascii_uppercase)
+            print(f"Computer guesses: {guess}")
+
+        word,guessed_letters,lives,state = update_game_state(secret_word,guessed_letters,guess,lives,word)
+        print(f"{state}!")
+        print(" ".join(word))
+        print(f"Guessed letters: {', '.join(guessed_letters)}")
+        print(f"Lives remaining: {lives}")
+        print("-----------------------------")
+    
+    if "_" not in word:
+        print("Congratulations! You've guessed the word!")
+        return None
+    else:
+        print(f"Game over! The word was: {secret_word}")
+        return None
+
+        
+print("Hangman Game")
+mode = input("Who would you like to play? User/Computer (u/c)")
+    
+if __name__ == "__main__":    game(mode)
